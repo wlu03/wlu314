@@ -28,7 +28,7 @@ function HomeScreen() {
           style={isHovered ? {...styles.resumeButton, ...styles.resumeButtonHover} : styles.resumeButton}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          onClick={() => window.open('https://drive.google.com/file/d/YOUR_GOOGLE_DRIVE_FILE_ID/view', '_blank')}
+          onClick={() => window.open('https://wlu314-wesley-lus-projects.vercel.app/', '_blank')}
         >
           View Resume
         </button>
