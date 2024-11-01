@@ -4,14 +4,20 @@ function Experience() {
   return (
     <div style={styles.container}>
       <div style={styles.textContainer}>
-        <h1 style={styles.title}>education & experience.</h1>
+        <h1 style={styles.title}>Education & Experience.</h1>
         
         <section style={styles.section}>
           <h2 style={styles.subtitle}>Education</h2>
-          <p style={styles.paragraph}>Bachelor of Science in Computer Science, Mathematics</p>
-          <ul style={styles.list}>
-            <li>Threads: Artificial Intelligence & System Architecture</li>
-          </ul>
+          <div style={styles.educationHeader}>
+            <img src="/img/gtlogo.png" alt="Georgia Tech Logo" style={styles.logo} />
+            <p style={styles.institution}>Georgia Institute of Technology</p>
+          </div>
+          <div style={styles.educationDetails}>
+            <p style={styles.degree}>B.S. Computer Science (System Architecture & Artificial Intelligence)</p>
+            <p style={styles.coursework}><strong>Coursework:</strong> Systems & Networks, Computer Organization, Algorithm Design, Discrete Math, Algorithms & Data Structures, Object-Oriented Programming, Probability & Statistics, Machine Learning, Artifical Intelligence</p>
+            <p style={styles.research}><strong>Research:</strong> Automated Algorithm Design to find surrogate models to speed up neural architecture search</p>
+            <p style={styles.date}>Aug 2022–May 2026</p>
+          </div>
         </section>
         
         <section style={styles.section}>
@@ -59,20 +65,47 @@ const styles = {
     fontWeight: 'bold',
     marginBottom: '10px',
   },
+  educationHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '10px',
+  },
+  logo: {
+    width: '40px',
+    height: '40px',
+    marginRight: '10px',
+  },
+  institution: {
+    fontSize: '24px',
+    fontWeight: 'bold',
+  },
+  educationDetails: {
+    maxWidth: '800px',
+  },
+  degree: {
+    fontSize: '24px',
+    fontWeight: 'bold',
+    marginBottom: '5px',
+  },
+  coursework: {
+    fontSize: '18px',
+    marginBottom: '5px',
+  },
+  research: {
+    fontSize: '18px',
+    marginBottom: '5px',
+  },
+  date: {
+    fontSize: '18px',
+    fontStyle: 'italic',
+    marginTop: '10px',
+  },
   paragraph: {
-    fontSize: '30px',
+    fontSize: '20px',
     lineHeight: '1.6',
     marginBottom: '15px',
     fontWeight: '400',
   },
-  list: {
-    fontSize: '30px',
-    lineHeight: '1.6',
-    marginBottom: '15px',
-    paddingLeft: '40px',
-    listStyleType: 'disc',
-  },
 };
 
 export default Experience;
-

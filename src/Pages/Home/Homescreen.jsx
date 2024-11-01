@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 function HomeScreen() {
   const [text, setText] = useState('');
   const [isHovered, setIsHovered] = useState(false);
-  const fullText = "developer, designer, researcher";
+  const fullText = "Developer, Designer, Researcher";
 
   useEffect(() => {
     let index = 0;
@@ -21,8 +21,8 @@ function HomeScreen() {
   return (
     <div style={styles.homeContainer}>
       <div style={styles.content}>
-        <h1 style={styles.title}>hello.</h1>
-        <h1 style={styles.title}>i’m wesley lu.</h1>
+        <h1 style={styles.title}>Hello.</h1>
+        <h1 style={styles.title}>I’m Wesley Duanrui Lu.</h1>
         <h1 style={styles.typing}>{text}</h1>
         <button 
           style={isHovered ? {...styles.resumeButton, ...styles.resumeButtonHover} : styles.resumeButton}
@@ -69,7 +69,6 @@ const styles = {
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     borderRight: '2px solid #000',
-    animation: 'blink 0.75s step-end infinite',
     margin: '5px 0',
   },
   resumeButton: {

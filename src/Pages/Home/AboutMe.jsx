@@ -5,7 +5,7 @@ function AboutMe() {
   return (
     <div style={styles.container}>
       <div style={styles.textContainer}>
-        <h1 style={styles.title}>about me.</h1>
+        <h1 style={styles.title}>About Me.</h1>
         <p style={styles.paragraph}>
           I'm Wesley Lu, a computer science student at Georgia Tech specializing in Artificial Intelligence and System Architecture. I'm passionate about finance and technology, with a strong focus on developing algorithmic trading strategies powered by machine learning.
         </p>

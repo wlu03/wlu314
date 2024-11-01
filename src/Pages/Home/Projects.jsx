@@ -63,7 +63,7 @@ function Projects() {
 
   return (
     <div className="container">
-      <h1 className="title">projects & research.</h1>
+      <h1 className="title">Projects & Research.</h1>
       <div className="grid">
         {projects.map((project, index) => (
           <a
