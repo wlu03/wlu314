@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './HomeScreen.css';
+import './Homescreen.css';
 
 function HomeScreen() {
   const [text, setText] = useState('');
