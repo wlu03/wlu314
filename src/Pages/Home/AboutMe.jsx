@@ -33,6 +33,7 @@ const styles = {
   textContainer: {
     flex: 1,
     textAlign: 'left',
+    width: '100%', // Ensure the text container takes full width on mobile
   },
   title: {
     fontSize: '3rem',
@@ -47,5 +48,10 @@ const styles = {
     fontWeight: '400',
   },
 };
+
+window.addEventListener('resize', () => {
+  const isMobile = window.innerWidth <= 768;
+  document.querySelector('.container').style.maxWidth = isMobile ? '100%' : '60vw';
+});
 
 export default AboutMe;
