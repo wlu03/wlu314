@@ -1,8 +1,10 @@
 import React from 'react';
 
 function AboutMe() {
+  const isMobile = window.innerWidth <= 768;
+
   return (
-    <div style={styles.container}>
+    <div style={{ ...styles.container, maxWidth: isMobile ? '100%' : '60vw' }}>
       <div style={styles.textContainer}>
         <h1 style={styles.title}>About Me.</h1>
         <p style={styles.paragraph}>
@@ -21,7 +23,6 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    maxWidth: '60vw',
     padding: '10rem',
     margin: '0 auto',
     color: '#333',

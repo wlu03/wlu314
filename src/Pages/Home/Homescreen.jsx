@@ -2,38 +2,46 @@ import React, { useEffect, useState } from 'react';
 
 function HomeScreen() {
   const [text, setText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const fullText = "Developer, Designer, Researcher";
+  
+  const roles = ["Developer", "Designer", "Researcher"];
+  const easterEggRole = "Gamer";
 
   useEffect(() => {
-    let index = 0;
+    const typingSpeed = isDeleting ? 50 : 150;
+    
+    // Show "Gamer" every 10th loop
+    const currentRole = (loopNum % 10 === 0) 
+      ? easterEggRole 
+      : roles[loopNum % roles.length];
 
-    function type() {
-      setText(fullText.slice(0, index + 1));
-      index++;
+    const handleTyping = () => {
+      const updatedText = isDeleting 
+        ? currentRole.substring(0, text.length - 1)
+        : currentRole.substring(0, text.length + 1);
 
-      if (index === fullText.length) {
-        setTimeout(() => {
-          index = 0;
-          setText(''); 
-          type();
-        }, 5000);
-      } else {
-        setTimeout(type, 100);
+      setText(updatedText);
+
+      if (!isDeleting && updatedText === currentRole) {
+        setTimeout(() => setIsDeleting(true), 2000);
+      } else if (isDeleting && updatedText === '') {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
       }
-    }
+    };
 
-    type();
-
-    return () => clearTimeout();
-  }, []);
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, loopNum]);
 
   return (
     <div style={styles.homeContainer}>
       <div style={styles.content}>
         <h1 style={styles.title}>Hello.</h1>
-        <h1 style={styles.title}>I’m Wesley Duanrui Lu.</h1>
-        <h1 style={styles.typing}>{text}</h1>
+        <h1 style={styles.title}>I’m Wesley D. Lu.</h1>
+        <h1 style={styles.typing}>I’m a {text}</h1>
         <button 
           style={isHovered ? {...styles.resumeButton, ...styles.resumeButtonHover} : styles.resumeButton}
           onMouseEnter={() => setIsHovered(true)}
@@ -74,7 +82,7 @@ const styles = {
     marginTop: '0.5rem',
   },
   typing: {
-    fontSize: '2.5rem',
+    fontSize: '3rem',
     fontWeight: 'bold',
     background: 'linear-gradient(90deg, #A4508B, #5F0A87, #007AFF)',
     WebkitBackgroundClip: 'text',
