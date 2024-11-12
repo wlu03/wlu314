@@ -1,0 +1,82 @@
+.homeContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 60rem;
+    padding: 2rem;
+    margin: 0 auto;
+    height: 20rem;
+    margin-top: 10rem;
+    margin-bottom: 15rem;
+    background-color: #ffffff;
+    color: #333;
+    font-family: 'Roboto', Arial, sans-serif;
+  }
+  
+  .content {
+    text-align: left;
+    width: 100%;
+  }
+  
+  .title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .typing {
+    font-size: 3.5rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #A4508B, #5F0A87, #007AFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0.5rem 0;
+  }
+  
+  .resumeButton {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #003366;
+    background-color: #e6f0ff;
+    border: 0.15rem solid #003366;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .resumeButtonHover {
+    color: #fff;
+    background: linear-gradient(90deg, rgba(164, 80, 139, 0.7), rgba(95, 10, 135, 0.7), rgba(0, 122, 255, 0.7));
+    transform: scale(1.05);
+  }
+  
+  /* Responsive styling for mobile screens */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 2rem;
+    }
+  
+    .typing {
+      font-size: 2rem;
+    }
+  
+    .resumeButton {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+    }
+  
+    .homeContainer {
+      padding: 1rem;
+      margin-top: 5rem;
+      margin-bottom: 7rem;
+      height: auto;
+    }
+  }
+  
