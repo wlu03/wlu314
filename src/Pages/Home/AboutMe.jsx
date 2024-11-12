@@ -1,10 +1,8 @@
 import React from 'react';
 
 function AboutMe() {
-  const isMobile = window.innerWidth <= 768;
-
   return (
-    <div style={{ ...styles.container, maxWidth: isMobile ? '100%' : '60vw' }}>
+    <div style={styles.container}>
       <div style={styles.textContainer}>
         <h1 style={styles.title}>About Me.</h1>
         <p style={styles.paragraph}>
@@ -23,35 +21,50 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: '10rem',
+    padding: '1rem',
     margin: '0 auto',
     color: '#333',
     fontFamily: 'Roboto, Arial, sans-serif',
     backgroundColor: '#ffffff',
-    minHeight: '50rem',
+    minHeight: '45rem',
+    width: '100%',
+    boxSizing: 'border-box',
   },
   textContainer: {
-    flex: 1,
     textAlign: 'left',
-    width: '100%', // Ensure the text container takes full width on mobile
+    maxWidth: '55vw',
+    width: '100%', 
   },
   title: {
-    fontSize: '3rem',
+    fontSize: '3rem', 
     fontWeight: 'bold',
     color: '#000000',
-    marginBottom: '1rem',
+    marginBottom: '0.8rem',
   },
   paragraph: {
-    fontSize: '1.5em',
-    lineHeight: '1.6',
-    marginBottom: '1rem',
+    fontSize: '1.7rem',
+    lineHeight: '1.5',
+    marginBottom: '0.8rem',
     fontWeight: '400',
   },
 };
 
-window.addEventListener('resize', () => {
-  const isMobile = window.innerWidth <= 768;
-  document.querySelector('.container').style.maxWidth = isMobile ? '100%' : '60vw';
-});
+const mediaQuery = `
+  @media (min-width: 768px) {
+    .container {
+      padding: 2rem;
+    }
+    .title {
+      font-size: 2.8rem; 
+    }
+    .paragraph {
+      font-size: 1.3rem; 
+    }
+  }
+`;
+
+const styleTag = document.createElement('style');
+styleTag.innerHTML = mediaQuery;
+document.head.appendChild(styleTag);
 
 export default AboutMe;

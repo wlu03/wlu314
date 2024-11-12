@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 function HomeScreen() {
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-  const [loopNum, setLoopNum] = useState(0);
+  const [loopNum, setLoopNum] = useState(1);
   const [isHovered, setIsHovered] = useState(false);
   
   const roles = ["Developer", "Designer", "Researcher"];
@@ -13,6 +13,7 @@ function HomeScreen() {
     const typingSpeed = isDeleting ? 50 : 150;
     
     // Show "Gamer" every 10th loop
+
     const currentRole = (loopNum % 10 === 0) 
       ? easterEggRole 
       : roles[loopNum % roles.length];
@@ -75,14 +76,14 @@ const styles = {
     width: '100%',
   },
   title: {
-    fontSize: '3rem',
+    fontSize: '3.5rem',
     fontWeight: 'bold',
     color: '#000000',
     marginBottom: '0.5rem',
     marginTop: '0.5rem',
   },
   typing: {
-    fontSize: '3rem',
+    fontSize: '3.5rem',
     fontWeight: 'bold',
     background: 'linear-gradient(90deg, #A4508B, #5F0A87, #007AFF)',
     WebkitBackgroundClip: 'text',

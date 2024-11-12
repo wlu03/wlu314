@@ -22,6 +22,25 @@ const Sections = () => {
         <span onClick={() => scrollToSection(aboutRef)}>About</span>
         <span onClick={() => scrollToSection(experienceRef)}>Experience</span>
         <span onClick={() => scrollToSection(projectsRef)}>Projects</span>
+
+        {/* Social icons as links without any text */}
+        <a
+          href="https://www.linkedin.com/in/-wesley-lu/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="social-icon"
+        >
+          <img src="/img/linkedin-icon.png" alt="LinkedIn" className="icon" /> 
+        </a>
+        
+        <a
+          href="https://github.com/wlu314" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="social-icon"
+        >
+          <img src="/img/github-icon.jpeg" alt="GitHub" className="icon" /> 
+        </a>
       </header>
 
       <div ref={homeRef}><Homescreen /></div>
