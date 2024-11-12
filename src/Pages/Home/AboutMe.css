@@ -16,7 +16,7 @@
   
   .textContainer {
     text-align: left;
-    max-width: 55vw;
+    max-width: 45vw;
     width: 100%;
   }
   
@@ -37,23 +37,27 @@
   /* Responsive styling for mobile screens */
   @media (max-width: 768px) {
     .container {
-        flex-direction: column;  
         text-align: center;
-        padding: 2rem;
         min-height: auto;
     }
-    
+
     .textContainer {
-      max-width: 85vw;
-      text-align: center;
-      align-items: center;
-    }
-    .textContainer .title {
+        max-width: 90rem; /* Allows more width on smaller screens */
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .textContainer .title {
+        font-size: 2rem;
+        padding-bottom: 0rem;
     }
 
     .paragraph {
+        font-size: 1rem;
+        padding-top: 0rem;
+        line-height: 1.6;
         text-align: center;
-        font-size: 1.2rem;
     }
-  }
+}
