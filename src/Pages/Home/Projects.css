@@ -12,6 +12,14 @@
     max-width: 100%;
     padding: 1rem;
   }
+  
+  .title, .grid, .card, .cardDescription {
+    text-align: left;
+  }
+  
+  .grid {
+    justify-items: start;
+  }
 }
 
 .title {
@@ -53,7 +61,7 @@
 
 .cardTitleContainer {
   display: flex;
-  align-items: center; 
+  align-items: center;
   gap: 0.6rem;
 }
 

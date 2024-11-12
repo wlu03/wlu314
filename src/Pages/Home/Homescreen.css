@@ -1,8 +1,7 @@
-/* HomeScreen.css */
 
 .homeContainer {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   max-width: 60rem;
   padding: 2rem;
@@ -14,29 +13,31 @@
   color: #333;
   font-family: 'Roboto', Arial, sans-serif;
 }
+.homeContainer .title {
+  font-size: 3rem;
+  margin-bottom: 0.1rem;
+  margin-top: 0.1rem;
+  color: #333;
+}
 
 .content {
   text-align: left;
   width: 100%;
 }
 
-.title {
-  font-size: 3.5rem;
+.typing {
+  font-size: 3rem;
   font-weight: bold;
-  color: #000000;
-  margin-bottom: 0.5rem;
-  margin-top: 0.5rem;
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem; 
 }
 
 .typing {
-  font-size: 3.5rem;
-  font-weight: bold;
   background: linear-gradient(90deg, #A4508B, #5F0A87, #007AFF);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   white-space: nowrap;
   overflow: hidden;
-  margin: 0.5rem 0;
 }
 
 .resumeButton {
@@ -61,12 +62,14 @@
 
 /* Responsive styling for mobile screens */
 @media (max-width: 768px) {
-  .title {
-    font-size: 2.5rem;
-  }
-
   .typing {
+    font-size: 2.5rem; 
+  }
+  .homeContainer .title {
     font-size: 2.5rem;
+    margin-bottom: 0.1rem;
+    margin-top: 0.1rem;
+    color: #333;
   }
 
   .resumeButton {

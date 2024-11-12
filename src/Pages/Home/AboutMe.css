@@ -1,0 +1,59 @@
+/* AboutMe.css */
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin: 0 auto;
+    color: #333;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #ffffff;
+    min-height: 45rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .textContainer {
+    text-align: left;
+    max-width: 55vw;
+    width: 100%;
+  }
+  
+  .title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 0.8rem;
+  }
+  
+  .paragraph {
+    font-size: 1.7rem;
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
+    font-weight: 400;
+  }
+  
+  /* Responsive styling for mobile screens */
+  @media (max-width: 768px) {
+    .container {
+        flex-direction: column;  
+        text-align: center;
+        padding: 2rem;
+        min-height: auto;
+    }
+    
+    .textContainer {
+      max-width: 85vw;
+      text-align: center;
+      align-items: center;
+    }
+    .textContainer .title {
+        text-align: center;
+    }
+
+    .paragraph {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+  }
