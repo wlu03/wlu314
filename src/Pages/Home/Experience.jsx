@@ -65,8 +65,7 @@ function Experience() {
 const styles = {
   container: {
     display: 'flex',
-    justifyContent: 'start',
-    paddingLeft: '20rem',
+    justifyContent: 'center',
     backgroundColor: '#ffffff',
     color: '#333333',
     fontFamily: 'Roboto, Arial, sans-serif',
