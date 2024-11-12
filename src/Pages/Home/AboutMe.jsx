@@ -1,5 +1,5 @@
 import React from 'react';
-import Slideshow from './Slideshow'; // Import the Slideshow component
+import Slideshow from './Slideshow';
 
 function AboutMe() {
   return (
@@ -14,7 +14,7 @@ function AboutMe() {
         </p>
       </div>
       <div style={styles.slideshowContainer}>
-        <Slideshow /> {/* Slideshow positioned to the right */}
+        <Slideshow />
       </div>
     </div>
   );
@@ -23,40 +23,37 @@ function AboutMe() {
 const styles = {
   container: {
     display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center', // Center horizontally in the viewport
-    alignItems: 'center', // Center vertically in the viewport
-    maxWidth: '1200px',
-    padding: '20px',
+    justifyContent: 'center',
+    alignItems: 'center',
+    maxWidth: '60vw',
+    padding: '2vw',
     margin: '0 auto',
     color: '#333',
     fontFamily: 'Roboto, Arial, sans-serif',
     backgroundColor: '#ffffff',
-    minHeight: '100vh',
+    minHeight: '50vh',
   },
   textContainer: {
     flex: 1,
-    marginRight: '40px',
+    marginRight: '2vw',
+    textAlign: 'left',
   },
   slideshowContainer: {
-    display: 'flex',
-    alignItems: 'center', 
+    alignItems: 'center',
     justifyContent: 'center',
-    width: '400px', 
+    width: '20vw2',
   },
   title: {
-    fontSize: '80px',
+    fontSize: '3vw',
     fontWeight: 'bold',
     color: '#000000',
-    marginBottom: '20px',
-    paddingLeft: '80px', 
+    marginBottom: '1vh',
   },
   paragraph: {
-    fontSize: '30px',
+    fontSize: '1.2vw',
     lineHeight: '1.6',
-    marginBottom: '15px',
+    marginBottom: '1vh',
     fontWeight: '400',
-    paddingLeft: '80px', 
   },
 };
 

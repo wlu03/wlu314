@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 const images = [
-    'img/apptroniks.png',
-    'img/gates.png',
-    'img/laketahoesnowboard.png',
-    'img/sunset.png',
-  ];
+  'img/apptroniks.png',
+  'img/gates.png',
+  'img/laketahoesnowboard.png',
+  'img/sunset.png',
+];
 
 function Slideshow() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -31,10 +31,13 @@ function Slideshow() {
 
 const styles = {
   slideshowContainer: {
-    width: '300px',
-    height: '400px',
+    width: '40vw', // 40% of the viewport width
+    height: '30vh', // 50% of the viewport height
     overflow: 'hidden',
-    borderRadius: '8px',
+    borderRadius: '1vw', // Border radius relative to viewport width
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   image: {
     width: '100%',

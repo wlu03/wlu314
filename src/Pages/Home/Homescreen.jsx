@@ -7,15 +7,25 @@ function HomeScreen() {
 
   useEffect(() => {
     let index = 0;
-    const interval = setInterval(() => {
+
+    function type() {
       setText(fullText.slice(0, index + 1));
       index++;
-      if (index === fullText.length) {
-        clearInterval(interval);
-      }
-    }, 100);
 
-    return () => clearInterval(interval);
+      if (index === fullText.length) {
+        setTimeout(() => {
+          index = 0;
+          setText(''); 
+          type();
+        }, 5000);
+      } else {
+        setTimeout(type, 100);
+      }
+    }
+
+    type();
+
+    return () => clearTimeout();
   }, []);
 
   return (
@@ -40,56 +50,56 @@ function HomeScreen() {
 const styles = {
   homeContainer: {
     display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    padding: '0px',
-    height: '100vh',
+    justifyContent: 'center',
+    alignItems: 'center',
+    maxWidth: '60vw',
+    padding: '2vw',
+    margin: '0 auto',
+    height: '40vh',
+    marginTop: '20vh',
     backgroundColor: '#ffffff',
+    color: '#333',
+    fontFamily: 'Roboto, Arial, sans-serif',
   },
   content: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    height: '100vh',
-    paddingLeft: '100px',
     textAlign: 'left',
+    width: '100%',
   },
   title: {
-    fontSize: '80px',
+    fontSize: '3vw',
     fontWeight: 'bold',
     color: '#000000',
-    margin: '0px 0 10px 0',
+    marginBottom: '0.5vh',
+    marginTop: '0.5vh',
   },
   typing: {
-    fontSize: '80px',
+    fontSize: '2.5vw',
     fontWeight: 'bold',
     background: 'linear-gradient(90deg, #A4508B, #5F0A87, #007AFF)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
-    borderRight: '2px solid #000',
-    margin: '5px 0',
+    margin: '0.5vh 0',
   },
   resumeButton: {
-    marginTop: '20px',
-    padding: '12px 24px',
-    fontSize: '18px',
+    marginTop: '1vh',
+    padding: '1vh 2vw',
+    fontSize: '1vw',
     fontWeight: 500,
     color: '#007aff',
     backgroundColor: 'transparent',
-    border: '2px solid #007aff',
-    borderRadius: '12px',
+    border: '0.1vw solid #007aff',
+    borderRadius: '0.5vw',
     cursor: 'pointer',
     outline: 'none',
-    width: '200px',
     textAlign: 'center',
     transition: 'all 0.3s ease',
   },
   resumeButtonHover: {
     color: '#fff',
     background: 'linear-gradient(90deg, #A4508B, #5F0A87, #007AFF)',
-    transform: 'scale(1.05)',
+    transform: 'scale(1.1)',
   },
 };
 
