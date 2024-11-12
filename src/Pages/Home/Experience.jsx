@@ -9,7 +9,7 @@ function Experience() {
           <div style={styles.timelineItem}>
             <div style={styles.marker}></div>
             <div style={{ ...styles.card, ...styles.cardHover }}>
-              <p style={styles.date}>2022 - 2026</p>
+              <p style={styles.date}>Aug. 2022 - May 2026</p>
               <h2 style={styles.cardTitle}>Georgia Institute of Technology</h2>
               <p style={styles.cardSubtitle}>Bachelor of Science in Computer Science</p>
               <p style={styles.cardDescription}>
@@ -19,12 +19,14 @@ function Experience() {
           </div>
         </div>
 
-        <h1 style={styles.sectionTitle}>Extracurriculars</h1>
+        <h1 style={styles.sectionTitle}>Experience</h1>
+
+        
         <div style={styles.timeline}>
           <div style={styles.timelineItem}>
             <div style={styles.marker}></div>
             <div style={{ ...styles.card, ...styles.cardHover }}>
-              <p style={styles.date}></p>
+              <p style={styles.date}>Aug. 2024 - Present</p>
               <h2 style={styles.cardTitle}>Automated Algorithm Design</h2>
               <p style={styles.cardSubtitle}>Undergraduate Machine Learning Researcher</p>
               <p style={styles.cardDescription}>
@@ -32,11 +34,22 @@ function Experience() {
               </p>
             </div>
           </div>
-
           <div style={styles.timelineItem}>
             <div style={styles.marker}></div>
             <div style={{ ...styles.card, ...styles.cardHover }}>
-              <p style={styles.date}></p>
+              <p style={styles.date}>2021 - Present</p>
+              <h2 style={styles.cardTitle}>Personal Invesment Portfolio</h2>
+              <p style={styles.cardSubtitle}>Quantitatve Portfolio Manager</p>
+              <p style={styles.cardDescription}>
+              Adopt a fundamental investment approach in markets. Take a 3-month hiatus by lending out 100% of the portfolio at an annual interest rate of 15%.
+              Looking into quantitative sports betting and Kalshi API. 
+              </p>
+            </div>
+          </div>
+          <div style={styles.timelineItem}>
+            <div style={styles.marker}></div>
+            <div style={{ ...styles.card, ...styles.cardHover }}>
+              <p style={styles.date}>Aug. 2023 - June 2023</p>
               <h2 style={styles.cardTitle}>Trading Club at Georgia Tech</h2>
               <p style={styles.cardSubtitle}>Quantitative Research Analyst</p>
               <p style={styles.cardDescription}>
