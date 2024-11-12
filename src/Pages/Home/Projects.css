@@ -1,23 +1,25 @@
 .container {
   max-width: 60vw;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1%;
   font-family: Roboto, Arial, sans-serif;
   color: #333;
   background-color: #ffffff;
 }
 
-.title {
+.project_title {
+  font-family: 'Roboto', sans-serif;
   font-size: 2.5rem;
-  text-align: left;
   font-weight: bold;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
+  align-items: stretch;
 }
 
 .card {

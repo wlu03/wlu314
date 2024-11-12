@@ -89,7 +89,7 @@ const styles = {
     padding: '1.5rem',
   },
   sectionTitle: {
-    fontSize: '2rem',
+    fontSize: '2.5rem',
     fontWeight: 'bold',
     color: '#333333',
     marginBottom: '1.5rem',
