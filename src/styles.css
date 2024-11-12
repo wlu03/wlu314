@@ -1,0 +1,24 @@
+body {
+  font-family: 'Roboto', sans-serif; 
+}
+
+.header-nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  background-color: #ffffff; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.header-nav span {
+  font-size: 18px;
+  color: #333333; 
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.header-nav span:hover {
+  color: #adb5bd;
+  transform: scale(1.1);
+}

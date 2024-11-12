@@ -8,7 +8,7 @@ function Experience() {
         <div style={styles.timeline}>
           <div style={styles.timelineItem}>
             <div style={styles.marker}></div>
-            <div style={styles.card}>
+            <div style={{ ...styles.card, ...styles.cardHover }}>
               <p style={styles.date}>2022 - 2026</p>
               <h2 style={styles.cardTitle}>Georgia Institute of Technology</h2>
               <p style={styles.cardSubtitle}>Bachelor of Science in Computer Science</p>
@@ -19,40 +19,40 @@ function Experience() {
           </div>
         </div>
 
-        <h1 style={styles.sectionTitle}>Extracirrculars</h1>
+        <h1 style={styles.sectionTitle}>Extracurriculars</h1>
         <div style={styles.timeline}>
           <div style={styles.timelineItem}>
             <div style={styles.marker}></div>
-            <div style={styles.card}>
+            <div style={{ ...styles.card, ...styles.cardHover }}>
               <p style={styles.date}></p>
               <h2 style={styles.cardTitle}>Automated Algorithm Design</h2>
-              <p style={styles.cardSubtitle}>Undergraduate Machine Learning Reseacher</p>
+              <p style={styles.cardSubtitle}>Undergraduate Machine Learning Researcher</p>
               <p style={styles.cardDescription}>
-              Accelerate NAS by developing surrogate models to predict network performance, reducing computational costs by approximating architecture evaluation across search spaces
+                Accelerate NAS by developing surrogate models to predict network performance, reducing computational costs by approximating architecture evaluation across search spaces.
               </p>
             </div>
           </div>
 
           <div style={styles.timelineItem}>
             <div style={styles.marker}></div>
-            <div style={styles.card}>
+            <div style={{ ...styles.card, ...styles.cardHover }}>
               <p style={styles.date}></p>
               <h2 style={styles.cardTitle}>Trading Club at Georgia Tech</h2>
               <p style={styles.cardSubtitle}>Quantitative Research Analyst</p>
               <p style={styles.cardDescription}>
-                Research low-cap cryptocurrency capturing alpha during high liquity movements, capturing assests in sudden liquidity gaps. 
+                Research low-cap cryptocurrency capturing alpha during high liquidity movements, capturing assets in sudden liquidity gaps.
               </p>
             </div>
           </div>
 
           <div style={styles.timelineItem}>
             <div style={styles.marker}></div>
-            <div style={styles.card}>
+            <div style={{ ...styles.card, ...styles.cardHover }}>
               <p style={styles.date}>Summer 2023</p>
               <h2 style={styles.cardTitle}>CEISMC</h2>
               <p style={styles.cardSubtitle}>Summer Intern</p>
               <p style={styles.cardDescription}>
-                Robotics bootcamp and activites for 20+ motivated high school students interested in Georgia Tech.
+                Robotics bootcamp and activities for 20+ motivated high school students interested in Georgia Tech.
               </p>
             </div>
           </div>
@@ -66,71 +66,79 @@ const styles = {
   container: {
     display: 'flex',
     justifyContent: 'start',
-    paddingLeft: '20vw',
-    backgroundColor: '#ffffff',  // White background
-    color: '#333333',  // Dark text color for contrast
+    paddingLeft: '20rem',
+    backgroundColor: '#ffffff',
+    color: '#333333',
     fontFamily: 'Roboto, Arial, sans-serif',
-    minHeight: '100vh',
+    minHeight: '80rem',
   },
   timelineContainer: {
     maxWidth: '700px',
-    padding: '1vw',  // Reduced padding
+    padding: '1.5rem',
   },
   sectionTitle: {
-    fontSize: '1.8vw',  // Smaller font size
+    fontSize: '2rem',
     fontWeight: 'bold',
     color: '#333333',
-    marginBottom: '1.5vh',
+    marginBottom: '1.5rem',
   },
   timeline: {
     position: 'relative',
-    paddingLeft: '15px',  // Reduced padding for the timeline
-    borderLeft: '1px solid #cccccc',  // Light gray vertical line
-    marginBottom: '3vh',
+    paddingLeft: '18px',
+    borderLeft: '2px solid #cccccc',
+    marginBottom: '3rem',
   },
   timelineItem: {
     display: 'flex',
     alignItems: 'flex-start',
-    marginBottom: '2vh',
+    marginBottom: '2.5rem',
   },
   marker: {
-    width: '8px',  // Smaller marker size
-    height: '8px',
-    backgroundColor: '#333333',  // Dark circle marker color
+    width: '10px',
+    height: '10px',
+    backgroundColor: '#333333',
     borderRadius: '50%',
     position: 'relative',
     left: '-20px',
     top: '8px',
   },
   card: {
-    backgroundColor: '#ffffff',  
+    backgroundColor: '#ffffff',
     color: '#333333',
-    borderRadius: '6px',  
-    padding: '0.8vw', 
+    borderRadius: '6px',
+    padding: '1rem',
     boxShadow: '0px 3px 8px rgba(0, 0, 0, 0.1)',
     maxWidth: '550px',
     width: '100%',
+    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    cursor: 'pointer',
+  },
+  cardHover: {
+    ':hover': {
+      transform: 'scale(1.05)',
+      boxShadow: '0 0.5rem 1rem rgba(0, 0, 0, 0.2)',
+    },
   },
   date: {
-    fontSize: '0.9vw',  
+    fontSize: '1rem',
     color: '#666666',
-    marginBottom: '0.4vh',
+    marginBottom: '0.6rem',
   },
   cardTitle: {
-    fontSize: '1.2vw', 
+    fontSize: '1.4rem',
     fontWeight: 'bold',
-    color: '#333333', 
-    marginBottom: '0.4vh',
+    color: '#333333',
+    marginBottom: '0.6rem',
   },
   cardSubtitle: {
-    fontSize: '0.9vw', 
+    fontSize: '1rem',
     fontStyle: 'italic',
     color: '#666666',
-    marginBottom: '0.8vh',
+    marginBottom: '1rem',
   },
   cardDescription: {
-    fontSize: '0.8vw',
-    lineHeight: '1.5',
+    fontSize: '0.9rem',
+    lineHeight: '1.8',
   },
 };
 
