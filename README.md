@@ -7,7 +7,7 @@ I'm a computer science student at Georgia Tech, focusing on Artificial Intellige
 - working on ml for pairs trading
 
 ### 📫 reach out!
-- my email is `wesleylu@gatech.edu`
+- my email is `wlu314@gatech.edu`
 - my linkedin is https://www.linkedin.com/in/-wesley-lu/
 - feel free to reach out!
 
