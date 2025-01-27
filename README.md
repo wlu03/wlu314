@@ -8,7 +8,6 @@ I'm a computer science student at Georgia Tech, focusing on Artificial Intellige
 
 ### 📫 reach out!
 - my email is `wlu314@gatech.edu`
-- my linkedin is https://www.linkedin.com/in/-wesley-lu/
 - feel free to reach out!
 
 <!--
