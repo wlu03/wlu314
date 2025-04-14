@@ -5,6 +5,16 @@ const App = () => {
   const canvasRef = useRef(null);
   const aboutContentRef = useRef(null);
   
+  // Add handler for About link click
+  const handleAboutClick = (e) => {
+    e.preventDefault(); // Prevent default anchor behavior
+    
+    // Reset scroll position of the about-content element
+    if (aboutContentRef.current) {
+      aboutContentRef.current.scrollTop = 0;
+    }
+  };
+  
   useEffect(() => {
     // Canvas animation logic
     const canvas = canvasRef.current;
@@ -169,9 +179,9 @@ const App = () => {
   return (
     <div className="page-wrapper">
       <div className="container">
-        <nav>
+        <nav className="header-nav">
           <ul>
-            <li><a href="#about">About</a></li>
+            <li><a href="#about" onClick={handleAboutClick}>About</a></li>
             <li><a href="#investments">Investments</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
