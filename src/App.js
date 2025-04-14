@@ -294,7 +294,7 @@ const App = () => {
                 <li>Snowboarding, Hiking, and Traveling</li>
                 <li>GTO Poker and Strategy</li>
                 <li>Casual Chess</li>
-                <li>Exploring Local Cuisine</li>
+                <li>Exploring Different Cuisines</li>
               </ul>
             </div>
           </section>
