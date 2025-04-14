@@ -5,13 +5,22 @@ const App = () => {
   const canvasRef = useRef(null);
   const aboutContentRef = useRef(null);
   
-  // Add handler for About link click
-  const handleAboutClick = (e) => {
+  // Handle click for all navigation items
+  const handleNavClick = (e, sectionId) => {
     e.preventDefault(); // Prevent default anchor behavior
     
-    // Reset scroll position of the about-content element
+    // Get the target section element
     if (aboutContentRef.current) {
-      aboutContentRef.current.scrollTop = 0;
+      // Find the section inside aboutContent
+      const section = aboutContentRef.current.querySelector(`#${sectionId}`);
+      
+      if (section) {
+        // Scroll to the section (with a small offset if needed)
+        aboutContentRef.current.scrollTop = section.offsetTop - 20;
+      } else if (sectionId === 'about') {
+        // Special case for About - scroll to top
+        aboutContentRef.current.scrollTop = 0;
+      }
     }
   };
   
@@ -179,13 +188,13 @@ const App = () => {
   return (
     <div className="page-wrapper">
       <div className="container">
-        <nav className="header-nav">
+        <nav>
           <ul>
-            <li><a href="#about" onClick={handleAboutClick}>About</a></li>
-            <li><a href="#investments">Investments</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#interests">Interests</a></li>
+            <li><a href="#about" onClick={(e) => handleNavClick(e, 'about')}>About</a></li>
+            <li><a href="#investments" onClick={(e) => handleNavClick(e, 'investments')}>Investments</a></li>
+            <li><a href="#projects" onClick={(e) => handleNavClick(e, 'projects')}>Projects</a></li>
+            <li><a href="#skills" onClick={(e) => handleNavClick(e, 'skills')}>Skills</a></li>
+            <li><a href="#interests" onClick={(e) => handleNavClick(e, 'interests')}>Interests</a></li>
           </ul>
         </nav>
         
