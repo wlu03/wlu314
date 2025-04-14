@@ -70,6 +70,7 @@ nav ul {
 }
 
 nav li {
+    margin-top: 1.5rem;
     margin-bottom: 1.5rem;
     transition: transform 0.2s ease;
 }
@@ -216,7 +217,7 @@ section:first-child {
 
 .footer {
     margin-top: 2rem;
-    padding-top: 2rem;
+    padding: 2rem 1.5rem 1.5rem;
     text-align: center;
     position: fixed;
     bottom: 0;
@@ -244,15 +245,16 @@ section:first-child {
 }
 
 .canvas-container {
-    min-height: 400px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    margin-top: 1.5rem;
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin-top: 3rem;
 }
 
-canvas {
-    max-width: 100%;
+#dynamicCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 /* Make the page accept scroll events but not actually scroll */
@@ -319,6 +321,18 @@ html::-webkit-scrollbar {
         overflow-y: visible;
     }
     
+    /* Mobile styles for lists */
+    .category ul {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .category li {
+        font-size: 1.05rem; /* Bigger text */
+        margin-bottom: 0.4rem; /* Reduced space between list items */
+        padding-left: 0.5rem; /* Decreased indentation/margin */
+    }
+    
     .footer {
         position: relative;
     }
@@ -327,10 +341,18 @@ html::-webkit-scrollbar {
         margin-top: 2rem;
     }
     
+    .category {
+        margin-bottom: 1.8rem; /* Reduce spacing between categories */
+    }
+    
     .footer-links {
         flex-direction: row;
         justify-content: center;
         flex-wrap: wrap;
         gap: 1rem;
+    }
+    
+    .dynamicCanvas {
+        margin-top: 0rem;
     }
 }

@@ -6,172 +6,139 @@ const App = () => {
   const aboutContentRef = useRef(null);
   
   useEffect(() => {
-    // Canvas animation logic from the template
+    // Canvas animation logic
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     
     // Set canvas size
     function resizeCanvas() {
-      canvas.width = canvas.parentElement.clientWidth * 0.9;
+      canvas.width = canvas.parentElement.clientWidth;
       canvas.height = 400;
     }
     
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
     
-    // Generate particle system that resembles ASCII art
-    const particles = [];
-    const particleCount = 1800;
+    // Hard-coded rain parameters
+    const RAIN_CONFIG = {
+      dropCount: 2000,     // Number of raindrops
+      speed: 0.5,           // Speed of raindrops (lower = slower)
+      wind: 0.2,           // Wind direction and strength (negative = left, positive = right)
+      dropSize: 1.5,      // Size of the raindrops
+    };
     
-    // Define layers for more dynamic appearance
-    const layers = [
-      { chars: ['.', '·'], size: [2, 3], speed: 0.8, opacity: [0.1, 0.3] },
-      { chars: [':', '-'], size: [3, 4], speed: 0.6, opacity: [0.2, 0.4] },
-      { chars: ['=', '+'], size: [3, 5], speed: 0.4, opacity: [0.3, 0.5] },
-      { chars: ['*', '#', '@'], size: [4, 6], speed: 0.2, opacity: [0.4, 0.7] }
-    ];
+    // Create raindrops array
+    let raindrops = [];
     
-    class Particle {
-      constructor(layerIndex) {
-        this.layerIndex = layerIndex || Math.floor(Math.random() * layers.length);
-        this.layer = layers[this.layerIndex];
+    // Lightning variables
+    let lightningAlpha = 0;
+    let lastLightning = 0;
+    
+    class Raindrop {
+      constructor() {
         this.reset();
       }
       
       reset() {
         this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        const charIndex = Math.floor(Math.random() * this.layer.chars.length);
-        this.char = this.layer.chars[charIndex];
-        this.size = this.layer.size[0] + Math.random() * (this.layer.size[1] - this.layer.size[0]);
-        
-        // More complex motion
-        const angle = Math.random() * Math.PI * 2;
-        const speed = (0.1 + Math.random() * 0.3) * this.layer.speed;
-        
-        this.velocity = {
-          x: Math.cos(angle) * speed,
-          y: Math.sin(angle) * speed
-        };
-        
-        this.life = 100 + Math.random() * 150;
-        this.opacity = this.layer.opacity[0] + Math.random() * (this.layer.opacity[1] - this.layer.opacity[0]);
-        
-        // Use your color palette
-        this.color = [
-          '#123458', // Blue
-          '#D4C9BE', // Beige
-          '#030303'  // Black
-        ][this.layerIndex % 3];
+        this.y = -Math.random() * 150;
+        this.size = Math.random() * RAIN_CONFIG.dropSize + 0.5;
+        this.speed = (Math.random() * 5 + 15) * (RAIN_CONFIG.speed / 10);
+        this.wind = Math.random() * RAIN_CONFIG.wind;
+        this.length = this.speed * 1.5;
+        this.opacity = Math.random() * 0.3 + 0.4; // Slightly more transparent to match light background
       }
       
       update() {
-        // Add slight gravity/drift effect
-        this.velocity.y += 0.002;
+        this.y += this.speed;
+        this.x += this.wind;
         
-        this.x += this.velocity.x;
-        this.y += this.velocity.y;
-        this.life -= 0.5;
-        
-        if (this.life <= 0 || 
-          this.x < -10 || 
-          this.x > canvas.width + 10 || 
-          this.y < -10 || 
-          this.y > canvas.height + 10) {
+        // Reset if out of bounds
+        if (this.y > canvas.height || this.x < 0 || this.x > canvas.width) {
           this.reset();
         }
       }
       
       draw() {
-        // Use hex color with opacity
-        const alpha = Math.floor(this.opacity * 255).toString(16).padStart(2, '0');
-        ctx.fillStyle = `${this.color}${alpha}`;
-        ctx.font = `${this.size}px monospace`;
-        ctx.fillText(this.char, this.x, this.y);
+        // Calculate fade effect based on proximity to top and bottom
+        let fadeOpacity = this.opacity;
+        
+        // Start fading in when within 10% of the top
+        const fadeInDistance = canvas.height * 0.1;
+        if (this.y < fadeInDistance) {
+          // Calculate fade-in factor (0 at top, 1.0 at fade end)
+          const fadeInFactor = this.y / fadeInDistance;
+          fadeOpacity = this.opacity * fadeInFactor;
+        }
+        
+        // Start fading out when within 15% of the bottom
+        const fadeOutDistance = canvas.height * 0.15;
+        if (this.y > canvas.height - fadeOutDistance) {
+          // Calculate fade-out factor (1.0 at fade start, 0 at bottom)
+          const fadeOutFactor = (canvas.height - this.y) / fadeOutDistance;
+          fadeOpacity = this.opacity * fadeOutFactor;
+        }
+        
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x + this.wind, this.y + this.length);
+        // Use color similar to accent color but more visible on light background
+        ctx.strokeStyle = `rgba(18, 52, 88, ${fadeOpacity})`;
+        ctx.lineWidth = this.size;
+        ctx.stroke();
+        
+        // Only show splash effect if not completely faded
+        if (this.y > canvas.height - 10 && this.y < canvas.height && fadeOpacity > 0.1) {
+          const splashOpacity = fadeOpacity * 0.75; // Make splash more subtle
+          ctx.beginPath();
+          ctx.arc(this.x, canvas.height, this.size * 1.5, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(18, 52, 88, ${splashOpacity})`;
+          ctx.fill();
+        }
       }
     }
     
-    // Create a more interesting geometric pattern
-    function createParticleShape() {
-      // Clear existing particles if any
-      particles.length = 0;
-      
-      // Create a unique geometric pattern
-      const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2;
-      
-      // Multiple shapes combined
-      
-      // 1. Circular base
-      for (let i = 0; i < particleCount * 0.5; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const radius = 50 + Math.random() * 120;
-        const layerIndex = Math.floor(radius / 40) % layers.length;
-        
-        const p = new Particle(layerIndex);
-        p.x = centerX + Math.cos(angle) * radius;
-        p.y = centerY + Math.sin(angle) * radius;
-        
-        // Adjust velocity for circular motion with varying speeds
-        const orbitSpeed = 0.2 - (layerIndex * 0.05);
-        p.velocity = {
-          x: Math.cos(angle + Math.PI/2) * orbitSpeed,
-          y: Math.sin(angle + Math.PI/2) * orbitSpeed
-        };
-        
-        particles.push(p);
-      }
-      
-      // 2. Horizontal infinity-like pattern
-      for (let i = 0; i < particleCount * 0.3; i++) {
-        const t = Math.random() * Math.PI * 2;
-        const figure8X = Math.sin(t) * 100;
-        const figure8Y = Math.sin(t * 2) * 50;
-        
-        const p = new Particle(3); // Use the densest layer
-        p.x = centerX + figure8X;
-        p.y = centerY + figure8Y;
-        
-        // Make it rotate
-        const speed = 0.05 + Math.random() * 0.1;
-        p.velocity = {
-          x: -Math.sin(t * 2) * speed * 2,
-          y: Math.sin(t) * speed * 2
-        };
-        
-        particles.push(p);
-      }
-      
-      // 3. Random accents and ambient particles
-      for (let i = 0; i < particleCount * 0.2; i++) {
-        const p = new Particle(Math.floor(Math.random() * 2));
-        particles.push(p);
+    // Initialize raindrops
+    function initRaindrops() {
+      raindrops = [];
+      for (let i = 0; i < RAIN_CONFIG.dropCount; i++) {
+        raindrops.push(new Raindrop());
       }
     }
     
+    // Create occasional lightning effect - disable on light background
+    function createLightning() {
+      // Disabled for light background
+      return;
+    }
+    
+    // Animation loop
     function animate() {
-      // Clear canvas with a nearly transparent background for trail effect
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+      // Clear with a background matching the website
+      ctx.fillStyle = 'rgba(255, 255, 255, 1)'; // White background to match website
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      // Update and draw particles
-      particles.forEach(p => {
-        p.update();
-        p.draw();
+      // Draw raindrops
+      raindrops.forEach(drop => {
+        drop.update();
+        drop.draw();
       });
       
       requestAnimationFrame(animate);
     }
     
-    createParticleShape();
+    // Initialize and start animation
+    initRaindrops();
     animate();
     
-    // Recreate shape on resize for responsiveness
-    window.addEventListener('resize', () => {
-      setTimeout(createParticleShape, 100);
-    });
-    
-    // Set up global scroll event handler to scroll the about-content
+    // Clean up event listeners on component unmount
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+    };
+  }, []);
+
+  // Set up global scroll event handler to scroll the about-content
+  useEffect(() => {
     const handleGlobalScroll = (e) => {
       // Skip if not in desktop view
       if (window.innerWidth <= 768) return;
@@ -195,10 +162,6 @@ const App = () => {
     
     // Clean up event listeners on component unmount
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      window.removeEventListener('resize', () => {
-        setTimeout(createParticleShape, 100);
-      });
       window.removeEventListener('wheel', handleGlobalScroll);
     };
   }, []);
@@ -228,15 +191,23 @@ const App = () => {
               I enjoy staying active, trying new restaurants, and exploring new hobbies/interests. 
               I also enjoy poker and chess.
             </p>
+
+            <p>
+              If you want to get in touch, please reach out via email or connect with me on LinkedIn.
+            </p>
           </section>
           
           <section id="investments">
             <div className="category">
               <h2>Investments <span>↓</span></h2>
               <p>
-                I angel invest in companies I find interesting. I wish to expand this to source my own deals and help founders. 
+                I angel invest in companies I find interesting. I wish to expand this to source my own deals and help founders.
+              </p>
+              <p>
                 To achieve this goal, I am building a web agent to help students apply for jobs. 
-                The companies listed were either invested in a seed round or series A.
+              </p>
+              <p>
+                I manage my own equity portfolio. The companies listed were either invested in a seed round or series A.
               </p>
               <ul>
                 <li><a href="https://writer.com/" target="_blank" rel="noopener noreferrer">Writer AI</a> - AI writing assistant platform</li>
@@ -308,9 +279,7 @@ const App = () => {
               </ul>
             </div>
           </section>
-          
-          {/* Add extra padding at the bottom for footer visibility */}
-          <div style={{ height: '120px' }}></div>
+
         </div>
         
         <div className="canvas-container">
@@ -321,7 +290,7 @@ const App = () => {
       <footer className="footer">
         <div className="footer-links">
           <a href="mailto:wesleylu@gatech.edu" className="footer-link">Email</a>
-          <a href="https://x.com/wlu314" className="footer-link">X</a>
+          <a href="https://x.com/wlu314" className="footer-link">X/Twitter</a>
           <a href="https://www.linkedin.com/in/-wesley-lu/" className="footer-link">LinkedIn</a>
           <a href="https://github.com/wlu314" className="footer-link">GitHub</a>
         </div>
