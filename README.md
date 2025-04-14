@@ -1,4 +1,4 @@
-## Hi there 👋, I'm wes
+## Hi there 
 
 I'm a computer science student at Georgia Tech, focusing on Artificial Intelligence and System Architecture, with a deep interest in the intersection of AI and finance. My academic and professional pursuits revolve around using machine learning and algorithmic strategies to drive innovation in financial markets. I’m passionate about developing technology that enables smarter, data-driven decisions in asset management, adapting dynamically to real-time market conditions. Outside the classroom, I enjoy staying active - snowboarding and gyming.
 
