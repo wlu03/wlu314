@@ -292,7 +292,7 @@ const App = () => {
               <h2>Interests <span>↓</span></h2>
               <ul>
                 <li>Snowboarding, Hiking, and Traveling</li>
-                <li>Poker Strategy</li>
+                <li>GTO Poker and Strategy</li>
                 <li>Casual Chess</li>
                 <li>Exploring Local Cuisine</li>
               </ul>
