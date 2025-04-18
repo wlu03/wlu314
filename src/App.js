@@ -259,10 +259,12 @@ const App = () => {
             <div className="category">
               <h2>Apps & Websites<span>↓</span></h2>
               <ul>
-                <li><a href="" target="_blank" rel="noopener noreferrer">MCP Server for Finance</a></li>
-                <li><a href="https://github.com/wlu314/Spotify-Stats-Tool" target="_blank" rel="noopener noreferrer">Spotify Analytics Dashboard</a></li>
-                <li><a href="https://useapply.ai" target="_blank" rel="noopener noreferrer">Apply AI: Web Agent for Job Applications</a></li>
+                <li><a href="" target="_blank" rel="noopener noreferrer">MCP Server for Finance - Alpaca, yfinance, SEC APIs for investments</a></li>
+                <li><a href="https://github.com/wlu03/ALPACA-MCP" target="_blank" rel="noopener noreferrer">Alpaca MCP Server - wrapping Alpaca API for trading automation</a></li>
+                <li><a href="" target="_blank" rel="noopener noreferrer">MultiMCP - Orchestrate multiple MCP-compatible LLMs via unified web interface</a></li>
+                <li><a href="https://useapply.ai" target="_blank" rel="noopener noreferrer">Apply AI - Web Agent for Job Applications</a></li>
                 <li><a href="https://www.spindleapi.com/" target="_blank" rel="noopener noreferrer">Spindle: NoSQL Automation w/ LLM</a></li>
+                <li><a href="https://github.com/wlu314/Spotify-Stats-Tool" target="_blank" rel="noopener noreferrer">Spotify Analytics Dashboard</a></li>
               </ul>
             </div>
             
